@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
   <style>
     body {
-      background: #f7f7fb;
+      background: #f9f7f3;
       font-family: 'Comic Neue', 'Comic Sans MS', cursive, sans-serif;
       min-height: 100vh;
       display: flex;
@@ -16,70 +16,107 @@
       justify-content: center;
     }
     .mem-container {
-      background: #fff;
-      border-radius: 28px;
-      box-shadow: 0 4px 24px 0 #b6b6e6a0;
-      padding: 36px 32px 28px 32px;
-      max-width: 370px;
+      background: #fffbe7;
+      border-radius: 32px;
+      box-shadow: 0 6px 0 #222, 0 0 0 4px #222;
+      padding: 38px 34px 30px 34px;
+      max-width: 390px;
       width: 100%;
       text-align: center;
-      border: 2.5px solid #e0e0f7;
+      border: 4px solid #222;
+      position: relative;
+      transition: box-shadow 0.2s;
+    }
+    .mem-container:hover {
+      box-shadow: 0 12px 0 #222, 0 0 0 4px #222;
     }
     .mem-header {
-      font-size: 1.35rem;
+      font-size: 1.7rem;
       font-weight: bold;
-      color: #6c4fc7;
-      margin-bottom: 10px;
-      letter-spacing: 0.5px;
+      color: #ffb347;
+      margin-bottom: 12px;
+      letter-spacing: 1.5px;
+      text-shadow: 2px 2px 0 #222, 0 2px 0 #fffbe7;
+      -webkit-text-stroke: 1.5px #222;
+      filter: drop-shadow(0 2px 0 #fffbe7);
+      user-select: none;
     }
     .mem-balance {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       color: #222;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
+      font-weight: bold;
+      border: 2.5px solid #222;
+      border-radius: 12px;
+      background: #fff6e0;
+      display: inline-block;
+      padding: 5px 16px;
+      box-shadow: 2px 2px 0 #222;
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+    .mem-balance:hover {
+      background: #ffe6a7;
+      box-shadow: 4px 4px 0 #222;
     }
     .mem-divider {
       border: none;
-      border-top: 2px dashed #e0d7f7;
-      margin: 18px 0 18px 0;
+      border-top: 3px dashed #222;
+      margin: 20px 0 20px 0;
+      background: none;
     }
     .mem-price {
-      font-size: 1rem;
-      color: #7a6ee6;
-      margin-bottom: 18px;
+      font-size: 1.15rem;
+      color: #ffb347;
+      margin-bottom: 20px;
+      font-weight: bold;
+      text-shadow: 1.5px 1.5px 0 #222;
+      letter-spacing: 0.5px;
+      user-select: none;
     }
     .sol-btn {
-      background: linear-gradient(90deg, #b6b6e6 0%, #aee6f7 100%);
-      border: 2px solid #b6b6e6;
-      border-radius: 14px;
-      color: #4b3ca7;
+      background: #ffe6a7;
+      border: 3px solid #222;
+      border-radius: 16px;
+      color: #222;
       font-weight: bold;
-      font-size: 1.1rem;
-      padding: 8px 32px 8px 32px;
-      margin-bottom: 18px;
+      font-size: 1.15rem;
+      padding: 10px 36px 10px 36px;
+      margin-bottom: 20px;
       margin-top: 0;
       cursor: pointer;
       outline: none;
-      transition: background 0.2s;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 10px;
       width: 100%;
-      max-width: 220px;
+      max-width: 230px;
       margin-left: auto;
       margin-right: auto;
+      box-shadow: 2.5px 2.5px 0 #222;
+      transition: box-shadow 0.15s, transform 0.15s, background 0.2s;
+    }
+    .sol-btn:active {
+      background: #ffd580;
+      transform: scale(0.97);
+      box-shadow: 0 0 0 #222;
+    }
+    .sol-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
     }
     .sol-btn svg {
-      width: 24px;
-      height: 24px;
+      width: 26px;
+      height: 26px;
       vertical-align: middle;
+      filter: drop-shadow(1.5px 1.5px 0 #222);
     }
     .mem-form-row {
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
-      gap: 12px;
-      margin-bottom: 18px;
+      gap: 14px;
+      margin-bottom: 20px;
     }
     .mem-form-col {
       flex: 1;
@@ -88,10 +125,13 @@
       align-items: flex-start;
     }
     .mem-label {
-      font-size: 0.98rem;
-      color: #6c4fc7;
-      margin-bottom: 4px;
-      font-weight: 600;
+      font-size: 1.08rem;
+      color: #ffb347;
+      margin-bottom: 5px;
+      font-weight: 700;
+      text-shadow: 1.5px 1.5px 0 #222;
+      letter-spacing: 0.5px;
+      user-select: none;
     }
     .mem-input-wrap {
       position: relative;
@@ -99,62 +139,88 @@
     }
     .mem-input {
       width: 100%;
-      border-radius: 12px;
-      border: 2px solid #e0e0f7;
-      background: #f7f7fb;
-      font-size: 1.1rem;
-      padding: 10px 38px 10px 12px;
-      color: #4b3ca7;
+      border-radius: 14px;
+      border: 3px solid #222;
+      background: #fffbe7;
+      font-size: 1.13rem;
+      padding: 12px 40px 12px 14px;
+      color: #222;
       font-family: inherit;
       outline: none;
       box-sizing: border-box;
       font-weight: bold;
+      box-shadow: 1.5px 1.5px 0 #222;
+      transition: border 0.2s, background 0.2s, box-shadow 0.15s, transform 0.15s;
+    }
+    .mem-input:focus {
+      border-color: #ffb347;
+      background: #fff6e0;
+      box-shadow: 3px 3px 0 #222;
+      transform: scale(1.03);
     }
     .mem-input:read-only {
-      background: #f0f0fa;
+      background: #f0e6d2;
       color: #b6b6e6;
     }
     .mem-input-icon {
       position: absolute;
-      right: 10px;
+      right: 12px;
       top: 50%;
       transform: translateY(-50%);
-      font-size: 1.3em;
+      font-size: 1.4em;
       pointer-events: none;
+      filter: drop-shadow(1.5px 1.5px 0 #222);
     }
     .mem-connect-btn {
-      background: linear-gradient(90deg, #b6e0f7 0%, #b6b6e6 100%);
-      border: none;
-      border-radius: 18px;
-      color: #4b3ca7;
-      font-size: 1.25rem;
+      background: #ffe6a7;
+      border: 3px solid #222;
+      border-radius: 20px;
+      color: #222;
+      font-size: 1.28rem;
       font-weight: bold;
-      padding: 16px 0;
+      padding: 18px 0;
       width: 100%;
-      margin: 18px 0 8px 0;
+      margin: 20px 0 10px 0;
       cursor: pointer;
-      box-shadow: 0 2px 8px #b6b6e633;
-      transition: background 0.2s;
+      box-shadow: 2.5px 2.5px 0 #222;
+      transition: background 0.2s, color 0.2s, box-shadow 0.15s, transform 0.15s;
+      text-shadow: 1.5px 1.5px 0 #fffbe7;
+    }
+    .mem-connect-btn:hover {
+      background: #ffd580;
+      color: #222;
+      box-shadow: 4px 4px 0 #222;
+      transform: scale(1.03);
     }
     .mem-connect-btn:active {
-      background: #aee6f7;
+      background: #ffe6a7cc;
+      color: #ffb347;
+      box-shadow: 0 0 0 #222;
+      transform: scale(0.97);
     }
     .mem-link {
-      color: #6c4fc7;
+      color: #ffb347;
       text-decoration: underline;
-      font-size: 1.01rem;
-      margin-top: 6px;
+      font-size: 1.05rem;
+      margin-top: 8px;
       display: inline-block;
-      transition: color 0.2s;
+      transition: color 0.2s, text-shadow 0.2s;
+      text-shadow: 1.5px 1.5px 0 #222;
+      user-select: none;
     }
     .mem-link:hover {
-      color: #4b3ca7;
+      color: #222;
+      text-shadow: 2px 2px 0 #ffb347;
     }
     .mem-status {
-      margin-top: 10px;
+      margin-top: 12px;
       color: #c44f7a;
-      font-size: 1rem;
+      font-size: 1.05rem;
       min-height: 1.2em;
+      font-weight: bold;
+      text-shadow: 1.5px 1.5px 0 #fffbe7;
+      letter-spacing: 0.5px;
+      user-select: none;
     }
   </style>
 </head>
